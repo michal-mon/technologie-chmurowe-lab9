@@ -13,7 +13,7 @@
   <ul>
     <li>
       <h4>Dockerfile.Phpfmp</h4>
-      Plik "Dockerfile.Phpfmp" powstał w oparciu o <a href="https://hub.docker.com/_/phpmyadmin">dokumentację na Dockerhub</a> oraz <a href="https://wiki.alpinelinux.org/wiki/Nginx_with_PHP">wpis na wiki.alpinelinux.org</a>.<br/>Na bazie obrazu "alpine" zostaje wykonana instalacja modułów PHP (wersja 7) oraz podstawowa konfiguracja zmiennych środowiskowych, zdefiniowanie, jakich wolumenów ma używać zbudowany obraz oraz uruchomienie PHP.
+      Plik "Dockerfile.Phpfmp" powstał w oparciu o <a href="https://wiki.alpinelinux.org/wiki/Nginx_with_PHP">wpis na wiki.alpinelinux.org</a>.<br/>Na bazie obrazu "alpine" zostaje wykonana instalacja modułów PHP (wersja 7) oraz podstawowa konfiguracja zmiennych środowiskowych, zdefiniowanie, jakich wolumenów ma używać zbudowany obraz oraz uruchomienie PHP.
     </li>
     <li>
       <h4>Dockerfile.Nginx</h4>
@@ -22,5 +22,5 @@
   </ul>
 </p>
 <h3>Plik "docker-compose.yml":</h3>
-<p></p>
+<p>Plik "docker-compose.yml" zawiera opis utworzenia usług składających się na stos LEMP (Linux, Nginx, MySQL, PHP) oraz phpMyAdmin. Serwer "nginx" został zbudowany na podstawie pliku "Dockerfile.Nginx" znajdującego się w katalogu "Nginx". Nasłuchuje na porcie 3000 (nie został wykorzystany port 6666, ze względu na problem z blokowaniem tego portu przez przeglądarki). Jest przyłączony do sieci "backend" oraz "frontend"<br/>. Usługa "phpfmp" została zbudowana na podstawie pliku "Dockerfile.Phpfmp". Jest przyłączona do sieci "backend".<br/>Usługa "mysql" powstała na bazie oficjalnego <a href="https://hub.docker.com/_/mysql">obrazu na Dockerhub</a>. Posiada skonfigurowany domyślny login, hasło, bazę danych, oraz hasło "root". Jest przyłączona zarówno do sieci "backend" jak i "frontend".<br/>Usługa "phpmyadmin" powstała na bazie <a href="https://hub.docker.com/_/phpmyadmin">obrazu na Dockerhub</a>. Jest przyłączona do sieci "backend".</p>
 <h3>Sprawdzenie poprawności działania:</h3>

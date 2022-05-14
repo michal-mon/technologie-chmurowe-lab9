@@ -24,3 +24,15 @@
 <h3>Plik "docker-compose.yml":</h3>
 <p>Plik "docker-compose.yml" zawiera opis utworzenia usług składających się na stos LEMP (Linux, Nginx, MySQL, PHP) oraz phpMyAdmin. Serwer "nginx" został zbudowany na podstawie pliku "Dockerfile.Nginx" znajdującego się w katalogu "Nginx". Nasłuchuje na porcie 3000 (nie został wykorzystany port 6666, ze względu na problem z blokowaniem tego portu przez przeglądarki). Jest przyłączony do sieci "backend" oraz "frontend".<br/>Usługa "phpfmp" została zbudowana na podstawie pliku "Dockerfile.Phpfmp". Jest przyłączona do sieci "backend".<br/>Usługa "mysql" powstała na bazie oficjalnego <a href="https://hub.docker.com/_/mysql">obrazu na Dockerhub</a>. Posiada skonfigurowane zmienne środowiskowe, tj.: login, hasło, bazę danych, oraz hasło "root". Jest przyłączona zarówno do sieci "backend" jak i "frontend".<br/>Usługa "phpmyadmin" powstała na bazie <a href="https://hub.docker.com/_/phpmyadmin">obrazu na Dockerhub</a>. Jest przyłączona do sieci "backend". Dodatkowo zostały skonfigurowane zmienne środowiskowe "PMA_HOST" - zdefiniowanie hosta (w tym przypadku MySQL) oraz "PMA_PORT" - zdefiniowanie portu serwera (w tym przypadku 3306).</p>
 <h3>Sprawdzenie poprawności działania:</h3>
+<h4>Polecenie "docker compose -f docker-compose.yml up</h4>
+<img src="/img/1_1.png">
+<img src="/img/1_2.png">
+<h4>Polecenie "docker ps -a"</h4>
+<img src="/img/2.png">
+<h4>Wyświetlenie konfiguracji PHP (serwer Nginx)</h4>
+<img src="/img/3.png">
+<h4>Pomyślne logowanie do phpMyAdmin</h4>
+<img src="/img/4.png">
+<img src="/img/5.png">
+  
+  

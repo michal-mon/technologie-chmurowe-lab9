@@ -1,0 +1,60 @@
+services:
+
+  nginx:
+    build:
+      context: ./Nginx
+      dockerfile: Dockerfile.Nginx
+    container_name: nginx
+    ports:
+      - "3000:3000"
+    networks:
+      - backend
+    depends_on:
+      - phpfmp
+    volumes:
+      - "./www:/www"
+      - "logs:/var/log/nginx"
+
+  phpfmp:
+    build:
+      dockerfile: Dockerfile.Phpfmp
+    container_name: phpfmp
+    networks:
+      - backend
+    volumes:
+      - "./www:/www"
+      - "logs:/var/log/php7"
+
+  mysql:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: my_secret_password
+      MYSQL_DATABASE: app_db
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: db_user_pass
+    networks:
+      - backend
+      - frontend
+    volumes:
+      - dbdata:/var/lib/mysql
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    networks:
+      - backend
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    ports:
+      - 6001:80
+
+
+networks:
+  backend:
+  frontend:
+
+volumes:
+  logs:
+  dbdata:
